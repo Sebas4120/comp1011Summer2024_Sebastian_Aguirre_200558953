@@ -17,11 +17,7 @@ public class Camera {
 
     }
     public Camera(String model, String make, String color, String sensor, String lens) {
-//        this.lens = lens;
-//        this.sensor = sensor;
-//        this.color = color;
-//        this.make = make;
-//        this.model = model;
+
         setModel(model);
         setMake(make);
         setColor(color);
@@ -81,7 +77,6 @@ public class Camera {
     }
 
     public boolean recordVideo(float howLong){
-
         videoHoursRecorded+=howLong;
         return true;
     }
@@ -96,5 +91,15 @@ public class Camera {
             System.out.println("Applying filter: " + filter);
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Camera selected:" +'\n' +
+                "lens= " + lens + '\n' +
+                "sensor=" + sensor + '\n' +
+                "color=" + color + '\n' +
+                "make=" + make + '\n' +
+                "model=" + model + '\n';
     }
 }

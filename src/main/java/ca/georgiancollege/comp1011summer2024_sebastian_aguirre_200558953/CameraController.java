@@ -18,9 +18,6 @@ public class CameraController {
     void onSubmit(ActionEvent event) {
         model.getText();//gets the text inputted by the user in the TextField
         error.getText();
-//        error.setText("Wrong input!");
-
-
 
         /*
             Add the code to the controller
@@ -32,6 +29,15 @@ public class CameraController {
         try {
             Camera camera = new Camera(model.getText(), make.getText(),
                     color.getText(), sensor.getText(), lens.getText());
+
+            output.setText(camera.toString());
+
+            error.setText("");
+            model.setText("");
+            make.setText("");
+            color.setText("");
+            sensor.setText("");
+            lens.setText("");
         }
         catch(IllegalArgumentException e){
             error.setText(e.getMessage());
