@@ -18,7 +18,7 @@ public class CameraController {
     void onSubmit(ActionEvent event) {
         model.getText();//gets the text inputted by the user in the TextField
         error.getText();
-        error.setText("Wrong input!");
+//        error.setText("Wrong input!");
 
 
 
@@ -29,8 +29,22 @@ public class CameraController {
                         if not, send an error message to the error label
                         if so, instantiate a new Camera object and pass the values of TextFields
          */
-        Camera camera = new Camera(model.getText(), make.getText(), color.getText(),
-                sensor.getText(), lens.getText());
+        try {
+            Camera camera = new Camera(model.getText(), make.getText(),
+                    color.getText(), sensor.getText(), lens.getText());
+        }
+        catch(IllegalArgumentException e){
+            error.setText(e.getMessage());
+        }
+    }
+
+    public void initialize(){
+
+        //runs right before the Stage is shown
+
+        output.setText("");
+        error.setText("");
+
     }
 
 }

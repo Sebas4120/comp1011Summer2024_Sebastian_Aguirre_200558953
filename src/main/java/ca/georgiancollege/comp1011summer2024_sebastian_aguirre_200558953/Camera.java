@@ -2,25 +2,21 @@ package ca.georgiancollege.comp1011summer2024_sebastian_aguirre_200558953;
 
 public class Camera {
     //holaaa
-    private String lens=""; // Estos cuando los declaras asi nunca seran nulos
-    private String sensor="";
-
-    private String color = "";
-    private String make="";
-
-    private String model="";
-
-    private float weight;
+    private String lens="", sensor="", color="", make="", model="";
+    private int numberOfPhotosTaken, yearReleased=2024;
     private float videoHoursRecorded;
 
-    protected int yearRealeased;
-
-    private int numOfPhotosTaken;
-
+    //alt+insert
+    private void validate(String title, String data){
+        if(data.trim().isEmpty()){
+            throw new IllegalArgumentException(title + " is too short. " +
+                    "Needs to be at least 1 character");
+        }
+    }
     public Camera(){
 
     }
-    public Camera(String lens, String sensor, String color, String make, String model) {
+    public Camera(String model, String make, String color, String sensor, String lens) {
 //        this.lens = lens;
 //        this.sensor = sensor;
 //        this.color = color;
@@ -33,11 +29,7 @@ public class Camera {
         setLens(lens);
     }
 
-    private void validate(String title, String data){
-        if (data.trim().isEmpty()){
-            throw new IllegalArgumentException(title + "is too short");
-        }
-    }
+
     public String getLens() {
         return lens;
     }
@@ -70,7 +62,7 @@ public class Camera {
     }
 
     public void setMake(String make) {
-        validate("make", make);
+        validate("Make", make);
         this.make = make;
     }
 
@@ -79,12 +71,12 @@ public class Camera {
     }
 
     public void setModel(String model) {
-        validate("model", model);
+        validate("Model", model);
         this.model = model;
     }
 
     public boolean takePicture (int howMany){
-        numOfPhotosTaken+=howMany;
+        numberOfPhotosTaken+= howMany;
         return true;
     }
 
@@ -96,7 +88,7 @@ public class Camera {
 
     public boolean isOldCamera(){
         int currentYear=2024;
-        return currentYear - yearRealeased>=3;
+        return currentYear - yearReleased >=3;
     }
 
     public boolean displayVideo(String... filters){
