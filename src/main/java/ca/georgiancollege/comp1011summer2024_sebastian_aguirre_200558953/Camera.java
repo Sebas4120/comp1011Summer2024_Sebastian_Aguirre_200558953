@@ -96,10 +96,10 @@ public class Camera {
     @Override
     public String toString() {
         return "Camera selected:" +'\n' +
-                "lens= " + lens + '\n' +
-                "sensor=" + sensor + '\n' +
-                "color=" + color + '\n' +
                 "make=" + make + '\n' +
-                "model=" + model + '\n';
+                "model=" + model + '\n'+
+                "lens= " + lens + '\n' +
+                "color=" + color + '\n' +
+                "sensor=" + sensor + '\n';
     }
 }
