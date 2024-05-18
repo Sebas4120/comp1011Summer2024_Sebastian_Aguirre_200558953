@@ -30,6 +30,7 @@ public class CameraController {
             Camera camera = new Camera(model.getText(), make.getText(),
                     color.getText(), sensor.getText(), lens.getText());
 
+            //Lab 2
             output.setText(camera.toString());
 
             error.setText("");
