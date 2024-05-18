@@ -17,7 +17,6 @@ public class Camera {
 
     }
     public Camera(String model, String make, String color, String sensor, String lens) {
-
         setModel(model);
         setMake(make);
         setColor(color);
