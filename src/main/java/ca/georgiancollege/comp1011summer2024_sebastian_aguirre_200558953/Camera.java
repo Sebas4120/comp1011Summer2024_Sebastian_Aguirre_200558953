@@ -1,10 +1,16 @@
 package ca.georgiancollege.comp1011summer2024_sebastian_aguirre_200558953;
 
+import java.util.ArrayList;
+
 public class Camera {
-    //holaaa
+
+
     private String lens="", sensor="", color="", make="", model="";
     private int numberOfPhotosTaken, yearReleased=2024;
     private float videoHoursRecorded;
+
+
+
 
     //alt+insert
     private void validate(String title, String data){
@@ -101,4 +107,7 @@ public class Camera {
                 "color=" + color + '\n' +
                 "sensor=" + sensor + '\n';
     }
+
+
+
 }

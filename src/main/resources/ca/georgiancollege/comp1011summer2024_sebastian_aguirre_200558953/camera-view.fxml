@@ -2,12 +2,12 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.georgiancollege.comp1011summer2024_sebastian_aguirre_200558953.CameraController">
    <children>
@@ -45,11 +45,13 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="output" alignment="TOP_LEFT" layoutX="58.0" layoutY="110.0" prefHeight="200.0" prefWidth="180.0" style="-fx-border-color: black; -fx-background-color: skyblue;" text="Label">
+                  <Label fx:id="output" alignment="TOP_LEFT" layoutX="58.0" layoutY="110.0" prefHeight="200.0" prefWidth="180.0" style="-fx-border-color: black; -fx-background-color: skyblue; -fx-text-overrun: break-word;" text="Label" textOverrun="CLIP">
                      <padding>
                         <Insets left="10.0" top="10.0" />
                      </padding>
                   </Label>
+                  <ComboBox fx:id="combo" layoutX="73.0" layoutY="347.0" prefWidth="150.0" />
+                  <Label layoutX="82.0" layoutY="318.0" text="Choose a Camera Object" />
                </children>
             </AnchorPane>
         </items>

@@ -1,0 +1,19 @@
+Add a ComboBox (dropdown Menu) to the right-hand side
+It will display the submitted Camera Objects
+When the user clicks on a Camera object
+    Display the toString in the Output box
+
+SceneBuilder
+    add a combbox to the right-hand sied
+    Change the display for output to Word-Wrap
+    Add fx:id for the combobox
+CameraController
+    Add the FMXL node of combobox to our controller
+    Add a ArrayList of camera Objects
+    On succesful submission, add the Camera Object to ArrayList
+    Update the combobox with the new submission of Camera Object
+
+    Change: Create a Camera Object OUTSIDE of any method
+    use the default constructor
+
+    In our onSubmit method, use the setters to set the 5 values
