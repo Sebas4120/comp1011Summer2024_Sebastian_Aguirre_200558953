@@ -2,9 +2,12 @@ package ca.georgiancollege.comp1011summer2024_sebastian_aguirre_200558953;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 
@@ -19,8 +22,11 @@ public class CameraController {
     @FXML
     private Label error,output;
 
+    @FXML
+    private ImageView image;
 
-    Camera camera = new Camera();
+//    Create a Camera Object OUTSIDE of any method
+    private Camera camera = new Camera();
 
     @FXML
     void onSubmit(ActionEvent event) {
@@ -37,11 +43,12 @@ public class CameraController {
         try {
 //            Camera camera = new Camera(model.getText(), make.getText(),
 //                    color.getText(), sensor.getText(), lens.getText());
-            camera.setMake(camera.getMake());
-            camera.setModel(camera.getModel());
-            camera.setColor(camera.getColor());
-            camera.setSensor(camera.getSensor());
-            camera.setLens(camera.getLens());
+            camera.setMake(make.getText());
+            camera.setModel(model.getText());
+            camera.setLens(lens.getText());
+            camera.setColor(color.getText());
+            camera.setSensor(sensor.getText());
+
 
             //Lab 2
             output.setText(camera.toString());
@@ -78,5 +85,31 @@ public class CameraController {
     private void addToComboBox(Camera c){
         combo.getItems().add(c.getMake() + ": " + c.getModel());
     }
+
+    @FXML
+    void onChange(ActionEvent event) {
+        int index = combo.getSelectionModel().getSelectedIndex();
+
+        output.setText(camerasList.get(index).toString());
+
+
+    }
+
+    @FXML
+    void after(ActionEvent event) {
+        String text = ((Button) event.getSource()).getText();
+        System.out.println(text);
+
+        image.setImage(new Image("file:./src/main/resources/photos/photo2.jpg"));
+
+    }
+
+    @FXML
+    void before(ActionEvent event) {
+        String text = ((Button) event.getSource()).getText();
+        System.out.println(text);
+    }
+
+
 
 }

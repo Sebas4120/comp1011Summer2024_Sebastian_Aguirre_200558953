@@ -4,16 +4,19 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.georgiancollege.comp1011summer2024_sebastian_aguirre_200558953.CameraController">
+<AnchorPane prefHeight="524.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.georgiancollege.comp1011summer2024_sebastian_aguirre_200558953.CameraController">
    <children>
-      <SplitPane dividerPositions="0.5" prefHeight="400.0" prefWidth="600.0">
+      <SplitPane dividerPositions="0.5" prefHeight="524.0" prefWidth="600.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="295.0">
                <children>
                   <Label alignment="CENTER" layoutX="14.0" layoutY="40.0" prefHeight="17.0" prefWidth="269.0" text="Create Camera!">
                      <font>
@@ -25,17 +28,27 @@
                         <Font name="AdobeHebrew-Regular" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="35.0" layoutY="137.0" prefHeight="17.0" prefWidth="47.0" text="Make" />
-                  <Label layoutX="35.0" layoutY="172.0" prefHeight="17.0" prefWidth="47.0" text="Model" />
-                  <Label layoutX="35.0" layoutY="207.0" prefHeight="17.0" prefWidth="47.0" text="Lens" />
-                  <Label layoutX="35.0" layoutY="247.0" prefHeight="17.0" prefWidth="47.0" text="Color" />
-                  <Label layoutX="35.0" layoutY="285.0" prefHeight="17.0" prefWidth="47.0" text="Sensor" />
-                  <TextField fx:id="make" layoutX="76.0" layoutY="133.0" />
-                  <TextField fx:id="model" layoutX="76.0" layoutY="168.0" />
-                  <TextField fx:id="lens" layoutX="76.0" layoutY="203.0" />
-                  <TextField fx:id="color" layoutX="76.0" layoutY="243.0" />
-                  <TextField fx:id="sensor" layoutX="76.0" layoutY="281.0" />
-                  <Button layoutX="122.0" layoutY="327.0" mnemonicParsing="false" onAction="#onSubmit" text="Submit" />
+                  <Label layoutX="51.0" layoutY="265.0" prefHeight="17.0" prefWidth="47.0" text="Make" />
+                  <Label layoutX="51.0" layoutY="300.0" prefHeight="17.0" prefWidth="47.0" text="Model" />
+                  <Label layoutX="51.0" layoutY="335.0" prefHeight="17.0" prefWidth="47.0" text="Lens" />
+                  <Label layoutX="51.0" layoutY="375.0" prefHeight="17.0" prefWidth="47.0" text="Color" />
+                  <Label layoutX="51.0" layoutY="413.0" prefHeight="17.0" prefWidth="47.0" text="Sensor" />
+                  <TextField fx:id="make" layoutX="92.0" layoutY="261.0" />
+                  <TextField fx:id="model" layoutX="92.0" layoutY="296.0" />
+                  <TextField fx:id="lens" layoutX="92.0" layoutY="331.0" />
+                  <TextField fx:id="color" layoutX="92.0" layoutY="371.0" />
+                  <TextField fx:id="sensor" layoutX="92.0" layoutY="409.0" />
+                  <Button layoutX="120.0" layoutY="481.0" mnemonicParsing="false" onAction="#onSubmit" text="Submit" />
+                  <Label layoutX="36.0" layoutY="446.0" text="MegaPixels" />
+                  <Slider fx:id="slider" blockIncrement="4.0" layoutX="120.0" layoutY="444.0" max="50.0" min="10.0" showTickLabels="true" showTickMarks="true" />
+                  <Label layoutX="37.0" layoutY="179.0" text="Image" />
+                  <ImageView fx:id="image" fitHeight="90.0" fitWidth="122.0" layoutX="98.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../Attachments/Fotos/photo1.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="202.0" layoutY="229.0" mnemonicParsing="false" onAction="#after" text="&gt;" />
+                  <Button layoutX="79.0" layoutY="229.0" mnemonicParsing="false" onAction="#before" text="&lt;" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="237.0" prefWidth="285.0">
@@ -50,7 +63,7 @@
                         <Insets left="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <ComboBox fx:id="combo" layoutX="73.0" layoutY="347.0" prefWidth="150.0" />
+                  <ComboBox fx:id="combo" layoutX="73.0" layoutY="347.0" onAction="#onChange" prefWidth="150.0" />
                   <Label layoutX="82.0" layoutY="318.0" text="Choose a Camera Object" />
                </children>
             </AnchorPane>

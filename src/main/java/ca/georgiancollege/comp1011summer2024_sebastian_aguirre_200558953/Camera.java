@@ -9,6 +9,12 @@ public class Camera {
     private int numberOfPhotosTaken, yearReleased=2024;
     private float videoHoursRecorded;
 
+    private String photo;
+
+    private int megaPixels;
+
+
+
 
 
 

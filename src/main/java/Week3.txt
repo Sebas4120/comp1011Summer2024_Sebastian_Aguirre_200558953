@@ -17,3 +17,15 @@ CameraController
     use the default constructor
 
     In our onSubmit method, use the setters to set the 5 values
+
+SceneBuilder
+    Add fx:id to
+        ImageView
+        Slider
+    Add OnAction even listener to
+        buttons < & >
+
+CameraController
+    Add the FXML Nodes (ImageView & Slider)
+    Add the OnArrowClick Listener
+
