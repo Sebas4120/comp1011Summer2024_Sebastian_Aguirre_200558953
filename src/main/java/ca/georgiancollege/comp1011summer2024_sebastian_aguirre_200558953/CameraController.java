@@ -30,7 +30,7 @@ public class CameraController {
 
     @FXML
     void onSubmit(ActionEvent event) {
-        model.getText();//gets the text inputted by the user in the TextField
+            model.getText();//gets the text inputted by the user in the TextField
         error.getText();
 
         /*
@@ -73,10 +73,14 @@ public class CameraController {
 
     public void initialize(){
 
+        String path = getClass().getResource("photos").getPath();
+        System.out.println(path);
+
         //runs right before the Stage is shown
 
         output.setText("");
         error.setText("");
+
 
 
     }
@@ -100,7 +104,7 @@ public class CameraController {
         String text = ((Button) event.getSource()).getText();
         System.out.println(text);
 
-        image.setImage(new Image("file:./src/main/resources/photos/photo2.jpg"));
+
 
     }
 
@@ -109,6 +113,8 @@ public class CameraController {
         String text = ((Button) event.getSource()).getText();
         System.out.println(text);
     }
+
+
 
 
 
