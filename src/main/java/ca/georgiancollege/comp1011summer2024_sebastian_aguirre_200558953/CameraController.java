@@ -6,14 +6,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class CameraController {
 
-    private ArrayList<String> camerasList =new ArrayList<String>();
+    private ArrayList<Camera> camerasList = new ArrayList<>();
+
+    private ArrayList<String> photoList = new ArrayList<>();
+
+    private int photoListIndex;
+
     @FXML
     private ComboBox<String>combo;
     @FXML
@@ -23,7 +31,7 @@ public class CameraController {
     private Label error,output;
 
     @FXML
-    private ImageView image;
+    private ImageView mainPhoto;
 
 //    Create a Camera Object OUTSIDE of any method
     private Camera camera = new Camera();
@@ -53,7 +61,7 @@ public class CameraController {
             //Lab 2
             output.setText(camera.toString());
 
-            camerasList.add(camera.toString());
+            camerasList.add(camera);
 
             System.out.println(camerasList);
 
@@ -73,8 +81,34 @@ public class CameraController {
 
     public void initialize(){
 
-        String path = getClass().getResource("photos").getPath();
+        
+
+        String path = getClass().getResource("images").getPath();
         System.out.println(path);
+        try {
+            Path p = Path.of(getClass().getResource("images").toURI());
+            Path p2 = Path.of("./src/main/resources" +
+                    "/ca/georgiancollege/comp1011summer2024_sebastian_aguirre_200558953" +
+                    "/images");
+
+            System.out.println(p2.toString());
+            System.out.println(p.toFile().exists());
+
+
+//            for(File f : p.toFile().listFiles()){
+//                System.out.println(f.getName());
+//            }
+
+
+
+            for(String filePath : p.toFile().list()){
+                photoList.add(p.resolve(filePath).toString());
+                System.out.println(p.resolve(filePath));
+            }
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
 
         //runs right before the Stage is shown
 
@@ -100,19 +134,32 @@ public class CameraController {
     }
 
     @FXML
-    void after(ActionEvent event) {
+    void onArrowClick(ActionEvent event) {
         String text = ((Button) event.getSource()).getText();
         System.out.println(text);
+//        mainPhoto.setImage(new Image(String.valueOf(getClass().getResource("images/photo2.jpg"))));
+//        if (text.equals(">")) {
+//            if (photoListIndex >= photoList.size() - 1) {
+//                photoListIndex = 0;
+//            } else {
+//                photoListIndex++;
+//            }
+//        } else {
+//            if (photoListIndex <= 0) {
+//                photoListIndex = photoList.size() - 1;
+//            } else {
+//                photoListIndex--;
+//            }
+//        }
 
-
+        photoListIndex = text.equals(">") ? photoListIndex >= photoList.size() -1 ? 0 : photoListIndex + 1
+                : photoListIndex <= 0 ? photoList.size() - 1 : photoListIndex - 1;
+        System.out.println(photoList.get(photoListIndex));
+        mainPhoto.setImage(new Image(photoList.get(photoListIndex)));
 
     }
 
-    @FXML
-    void before(ActionEvent event) {
-        String text = ((Button) event.getSource()).getText();
-        System.out.println(text);
-    }
+
 
 
 
