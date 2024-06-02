@@ -38,7 +38,7 @@ public class CameraController {
 
     @FXML
     void onSubmit(ActionEvent event) {
-            model.getText();//gets the text inputted by the user in the TextField
+        model.getText();//gets the text inputted by the user in the TextField
         error.getText();
 
         /*
@@ -78,7 +78,7 @@ public class CameraController {
             error.setText(e.getMessage());
         }
     }
-
+    
     public void initialize(){
 
         
