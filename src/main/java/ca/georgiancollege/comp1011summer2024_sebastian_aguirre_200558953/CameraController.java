@@ -1,6 +1,7 @@
 package ca.georgiancollege.comp1011summer2024_sebastian_aguirre_200558953;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -8,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +17,9 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class CameraController {
+
+    @FXML
+    Button btn;
 
     //Agrego el nodo donde apareceran las fotos
     @FXML
@@ -97,8 +102,40 @@ public class CameraController {
     }
     
     public void initialize(){
-        String path = getClass().getResource("images").getPath();
+
+        //This is an event listener, listen the button any time someone clicks on
+        //Esto es una Anonymus function, porque las usamos? because it is an interface that
+        // declares a method and this method needs a body
+
+        //Anonymus function no pertenece a ninguna clase, 99% de las veces esta atado a data
+        // source or an event
+        btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+
+            }
+        });
+        String path = getClass().getResource("photos").getPath();
         System.out.println(path);
+
+        try{
+            Path p = Path.of(getClass().getResource("photos").toURI());
+            System.out.println(p.toFile().exists());
+
+            //Obtenemos la lista de las camaras
+//            camera1.jpeg
+//            camera2.jpg
+//            camera3.jpg
+            for (File f : p.toFile().listFiles()){
+                System.out.println(f.getName());
+            }
+        }catch(Exception e){
+            System.err.println(e);
+        }
+
+
+
+
         output.setText("");
         error.setText("");
 
