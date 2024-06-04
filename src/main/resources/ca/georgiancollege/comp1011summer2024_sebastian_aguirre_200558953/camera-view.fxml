@@ -44,11 +44,12 @@
                   <Label layoutX="37.0" layoutY="179.0" text="Image" />
                   <ImageView fx:id="mainPhoto" fitHeight="90.0" fitWidth="122.0" layoutX="98.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../Attachments/Fotos/photo1.jpg" />
-                     </image>
-                  </ImageView>
-                  <Button layoutX="202.0" layoutY="229.0" mnemonicParsing="false" onAction="#onArrowClick" text="&gt;" />
-                  <Button layoutX="79.0" layoutY="229.0" mnemonicParsing="false" onAction="#onArrowClick" text="&lt;" />
+                        <Image url="@photos/camera1.jpeg" />
+                     </image></ImageView>
+                  <Button layoutX="80.0" layoutY="224.0" mnemonicParsing="false" onAction="#onArrowClick" text="&lt;" />
+                  <Button layoutX="220.0" layoutY="224.0" mnemonicParsing="false" onAction="#onArrowClick" text="&gt;" />
+<!--                  <Button layoutX="202.0" layoutY="229.0" mnemonicParsing="false" onAction="#onArrowClick" text="&gt;" />-->
+<!--                  <Button layoutX="79.0" layoutY="229.0" mnemonicParsing="false" onAction="#onArrowClick" text="&lt;" />-->
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="237.0" prefWidth="285.0">
