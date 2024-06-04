@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.io.File;
@@ -17,6 +18,13 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class CameraController {
+
+    EventHandler<MouseEvent> mouseEventEventHandler = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent mouseEvent) {
+            System.out.println("Random Mouse Event");
+        }
+    };
 
     @FXML
     Button btn;
@@ -103,18 +111,33 @@ public class CameraController {
     
     public void initialize(){
 
+        btn.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+            @Override
+            public void handle(ContextMenuEvent e) {
+                System.out.println("Clicked the context menu");
+            }
+        });
+
+        btn.setOnMouseExited(e -> System.out.println("Exited mouse"));
+
+        btn.setOnMouseEntered( (e) -> {System.out.println("Entered mouse");   }    );
+
+        btn.setOnMouseMoved(mouseEventEventHandler);
+
+
         //This is an event listener, listen the button any time someone clicks on
         //Esto es una Anonymus function, porque las usamos? because it is an interface that
         // declares a method and this method needs a body
 
         //Anonymus function no pertenece a ninguna clase, 99% de las veces esta atado a data
         // source or an event
-        btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
+//        btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent mouseEvent) {
+//
+//            }
+//        });
 
-            }
-        });
         String path = getClass().getResource("photos").getPath();
         System.out.println(path);
 
@@ -126,8 +149,10 @@ public class CameraController {
 //            camera1.jpeg
 //            camera2.jpg
 //            camera3.jpg
-            for (File f : p.toFile().listFiles()){
-                System.out.println(f.getName());
+            for (File filePath : p.toFile().listFiles()){
+               // photoList.add("photos/"+filePath);
+                photoList.add("photos/" + filePath.getName());
+                System.out.println(filePath.getName());
             }
         }catch(Exception e){
             System.err.println(e);
@@ -162,29 +187,17 @@ public class CameraController {
 
     @FXML
     void onArrowClick(ActionEvent event) {
-//        String text = ((Button) event.getSource()).getText();
-//        System.out.println(text);
+        String text = ((Button) event.getSource()).getText();
+        System.out.println(text);
         //Este codigo lo saco de los slides de la semana 3
 //        mainPhoto.setImage(new Image(String.valueOf(getClass().getResource("photos/camera2.jpg"))));
-//////        if (text.equals(">")) {
-////            if (photoListIndex >= photoList.size() - 1) {
-////                photoListIndex = 0;
-////            } else {
-////                photoListIndex++;
-////            }
-////        } else {
-////            if (photoListIndex <= 0) {
-////                photoListIndex = photoList.size() - 1;
-////            } else {
-////                photoListIndex--;
-////            }
-////        }
-//
-//        photoListIndex = text.equals(">") ? photoListIndex >= photoList.size() -1 ? 0 : photoListIndex + 1
-//                : photoListIndex <= 0 ? photoList.size() - 1 : photoListIndex - 1;
+
+        photoListIndex = text.equals(">") ? photoListIndex >= photoList.size() -1 ? 0 : photoListIndex + 1
+                : photoListIndex <= 0 ? photoList.size() - 1 : photoListIndex - 1;
 //        System.out.println(photoList.get(photoListIndex));
-//        mainPhoto.setImage(new Image(photoList.get(photoListIndex)));
-//
+        System.out.println(photoList.get(photoListIndex));
+        mainPhoto.setImage(new Image(String.valueOf(getClass().getResource(photoList.get(photoListIndex)))));
+        
     }
 
 
