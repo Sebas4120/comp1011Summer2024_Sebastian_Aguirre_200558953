@@ -127,14 +127,17 @@ public class CameraController {
         //Esto es una Anonymus function, porque las usamos? because it is an interface that
         // declares a method and this method needs a body
 
+        //Porque existe? porque es una interface que tiene un metodo, y este metodo neceista un
+        // cuerpo.
+
         //Anonymus function no pertenece a ninguna clase, 99% de las veces esta atado a data
         // source or an event
-//        btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent mouseEvent) {
-//
-//            }
-//        });
+        btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                System.out.println("clock from the mouse");
+            }
+        });
 
         String path = getClass().getResource("photos").getPath();
         System.out.println(path);
