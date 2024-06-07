@@ -1,0 +1,12 @@
+#btnEdit{
+    -fx-background-color: skyblue;
+    -fx-text-fill: white;
+}
+
+#btnEdit:hover{
+    -fx-background-color: blue;
+}
+
+.modify_buttons{
+    -fx-background-color: red;
+}

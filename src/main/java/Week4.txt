@@ -1,0 +1,15 @@
+Create an ArrayList <String||File> store all photos
+
+set the mainPhoto image to the first element in our photoList variable
+
+Index indicate the current file displayed
+
+Use the setImage (new Image("path to the image")) method to set the image of the ImageView
+
+
+Once user clicks on submit
+    Add a string path to the photo chosen
+    Get and add a Int value for megapixel
+
+Warning:
+    You may have to make changes to your camera class (Model)

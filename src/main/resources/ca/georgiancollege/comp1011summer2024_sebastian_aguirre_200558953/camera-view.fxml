@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="524.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.georgiancollege.comp1011summer2024_sebastian_aguirre_200558953.CameraController">
    <children>
-      <SplitPane dividerPositions="0.5" prefHeight="524.0" prefWidth="600.0">
+      <SplitPane dividerPositions="0.5" prefHeight="524.0" prefWidth="600.0" stylesheets="@photos/app.css">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="295.0">
                <children>
@@ -54,18 +54,25 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="237.0" prefWidth="285.0">
                <children>
-                  <Label alignment="CENTER" layoutX="113.0" layoutY="47.0" prefHeight="17.0" prefWidth="69.0" text="Output">
+                  <Label alignment="CENTER" layoutX="113.0" layoutY="173.0" prefHeight="17.0" prefWidth="69.0" text="Output">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="output" alignment="TOP_LEFT" layoutX="61.0" layoutY="110.0" prefHeight="200.0" prefWidth="177.0" style="-fx-border-color: black; -fx-background-color: skyblue; -fx-text-overrun: break-word;" text="Label" textOverrun="CLIP">
+                  <Label fx:id="output" alignment="TOP_LEFT" layoutX="59.0" layoutY="209.0" prefHeight="200.0" prefWidth="177.0" style="-fx-border-color: black; -fx-background-color: skyblue; -fx-text-overrun: break-word;" text="Label" textOverrun="CLIP">
                      <padding>
                         <Insets left="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <ComboBox fx:id="combo" layoutX="73.0" layoutY="347.0" onAction="#onChange" prefWidth="150.0" />
-                  <Label layoutX="82.0" layoutY="318.0" text="Choose a Camera Object" />
+                  <ComboBox fx:id="combo" layoutX="69.0" layoutY="475.0" onAction="#onChange" prefWidth="150.0" />
+                  <Label layoutX="78.0" layoutY="458.0" text="Choose a Camera Object" />
+                  <ImageView fx:id="rightPhoto" fitHeight="148.0" fitWidth="150.0" layoutX="73.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/default.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnEdit" layoutX="52.0" layoutY="417.0" mnemonicParsing="false" styleClass="_modify" text="Button" />
+                  <Button fx:id="btnDelete" layoutX="167.0" layoutY="417.0" mnemonicParsing="false" styleClass=".modify_buttons" text="Button" />
                </children>
             </AnchorPane>
         </items>

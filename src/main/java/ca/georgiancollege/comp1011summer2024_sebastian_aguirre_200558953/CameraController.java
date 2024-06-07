@@ -27,7 +27,7 @@ public class CameraController {
     };
 
     @FXML
-    Button btn;
+    Button btn,btnEdit,btnDelete;
 
     //Agrego el nodo donde apareceran las fotos
     @FXML
@@ -48,14 +48,10 @@ public class CameraController {
     @FXML
     private Label error,output;
 
+    @FXML
+    private ImageView rightPhoto;
 
-
-//    Create a Camera Object OUTSIDE of any method
-    // Aca lo que estamos haciendo es reutiliza la botella de agua, no comprarnos una botella
-// nueva cada vez que tengamos sed
-    // Esto no tiene @FXML porque no es un nodo del Scenebuilder
-//    private Camera camera = new Camera();
-
+//**********************************************************************
     @FXML
     void onSubmit(ActionEvent event) {
         model.getText();//gets the text inputted by the user in the TextField
@@ -63,25 +59,25 @@ public class CameraController {
 
         /*
             Add the code to the controller
-                evaluated each Textfield
-                    determine that each TextField has a length() of at least 1
-                        if not, send an error message to the error label
-                        if so, instantiate a new Camera object and pass the values of TextFields
+               evaluated each Textfield
+                 determine that each TextField has a length() of at least 1
+                    if not, send an error message to the error label
+                    if so, instantiate a new Camera object and pass the values of TextFields
          */
         try {
             Camera camera = new Camera(model.getText(), make.getText(),
                     color.getText(), sensor.getText(), lens.getText());
-//            camera.setMake(make.getText());
-//            camera.setModel(model.getText());
-//            camera.setLens(lens.getText());
-//            camera.setColor(color.getText());
-//            camera.setSensor(sensor.getText());
 
+//            rightPhoto.setImage(
+//                    new Image(
+//                            String.valueOf(getClass().getResource("photos/edit.png"))
+//                    )
+//            );
 
             //Lab 2 - aparece los datos que ingreso el usuario
             output.setText(camera.toString());
 
-            //Si el usuario a ingresado los datos coorectos en cada seccion, agregamos esos datos
+            //Si el usuario a ingresado los datos correctos en cada seccion, agregamos esos datos
             // de la camara a la ArrayList
             camerasList.add(camera);
 
@@ -89,13 +85,15 @@ public class CameraController {
             displayCamera();
 
             addToComboBox(camera);
-//
-//            error.setText("");
-//            model.setText("");
-//            make.setText("");
-//            color.setText("");
-//            sensor.setText("");
-//            lens.setText("");
+
+            error.setText("");
+            model.setText("");
+            make.setText("");
+            color.setText("");
+            sensor.setText("");
+            lens.setText("");
+
+
         }
         catch(IllegalArgumentException e){
             error.setText(e.getMessage());
@@ -111,19 +109,19 @@ public class CameraController {
     
     public void initialize(){
 
-        btn.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
-            @Override
-            public void handle(ContextMenuEvent e) {
-                System.out.println("Clicked the context menu");
-            }
-        });
-
-        btn.setOnMouseExited(e -> System.out.println("Exited mouse"));
-
-        btn.setOnMouseEntered( (e) -> {System.out.println("Entered mouse");   }    );
-
-        btn.setOnMouseMoved(mouseEventEventHandler);
-
+//        btn.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+//            @Override
+//            public void handle(ContextMenuEvent e) {
+//                System.out.println("Clicked the context menu");
+//            }
+//        });
+//
+//        btn.setOnMouseExited(e -> System.out.println("Exited mouse"));
+//
+//        btn.setOnMouseEntered( (e) -> {System.out.println("Entered mouse");   }    );
+//
+//        btn.setOnMouseMoved(mouseEventEventHandler);
+//
 
         //This is an event listener, listen the button any time someone clicks on
         //Esto es una Anonymus function, porque las usamos? because it is an interface that
@@ -151,15 +149,20 @@ public class CameraController {
 //            camera3.jpg
             for (File filePath : p.toFile().listFiles()){
                // photoList.add("photos/"+filePath);
-                photoList.add("photos/" + filePath.getName());
-                System.out.println(filePath.getName());
+                if(filePath.getName().contains("camera"));
+                    photoList.add("photos/" + filePath.getName());
+                    System.out.println(filePath.getName());
             }
+
+//            btnEdit.setText("");
+//            btnEdit.setGraphic(
+//                    new ImageView(
+//                            new Image(getClass().getResource("photos/edit.png")))
+//            );
+
         }catch(Exception e){
             System.err.println(e);
         }
-
-
-
 
         output.setText("");
         error.setText("");
@@ -173,35 +176,55 @@ public class CameraController {
         combo.getItems().add(c.getMake() + ": " + c.getModel());
     }
 
+    //Este metodo se activa cuando el usuario selecciona una camara de la lista
+    // Coloque un "OnAction" en el comboBox llamado "onChange"
     @FXML
     void onChange(ActionEvent event) {
 //        System.out.println("change!");
 
         //Selection Model
         int index = combo.getSelectionModel().getSelectedIndex();
+        System.out.println(index);
 
         output.setText(camerasList.get(index).toString());
-
-
     }
 
     @FXML
     void onArrowClick(ActionEvent event) {
+        //Este metodo de abajo es para saber que boton se ha presionado y obtener el texto
         String text = ((Button) event.getSource()).getText();
         System.out.println(text);
         //Este codigo lo saco de los slides de la semana 3
 //        mainPhoto.setImage(new Image(String.valueOf(getClass().getResource("photos/camera2.jpg"))));
 
-        photoListIndex = text.equals(">") ? photoListIndex >= photoList.size() -1 ? 0 : photoListIndex + 1
-                : photoListIndex <= 0 ? photoList.size() - 1 : photoListIndex - 1;
-//        System.out.println(photoList.get(photoListIndex));
+//        photoListIndex = text.equals(">") ? photoListIndex >= photoList.size() -1 ? 0 : photoListIndex + 1
+//                : photoListIndex <= 0 ? photoList.size() - 1 : photoListIndex - 1;
+
+        if (text.equals(">")) {
+            if (photoListIndex >= photoList.size() - 1) {
+                photoListIndex = 0;
+            } else {
+                photoListIndex += 1;
+            }
+        } else {
+            if (photoListIndex <= 0) {
+                photoListIndex = photoList.size() - 1;
+            } else {
+                photoListIndex -= 1;
+            }
+        }
+
+        //        System.out.println(photoList.get(photoListIndex));
         System.out.println(photoList.get(photoListIndex));
         mainPhoto.setImage(new Image(String.valueOf(getClass().getResource(photoList.get(photoListIndex)))));
-        
+
     }
 
 
+    public void appearRightImage(){
 
+
+    }
 
 
 
