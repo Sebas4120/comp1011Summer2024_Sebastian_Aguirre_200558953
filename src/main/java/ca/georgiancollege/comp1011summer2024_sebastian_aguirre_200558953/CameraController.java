@@ -109,29 +109,47 @@ public class CameraController {
     
     public void initialize(){
 
-//        btn.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+ //LAMBDA ****************************************
+        //Right Click!!!
+        btn.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+            @Override
+            public void handle(ContextMenuEvent e) {
+                System.out.println("Clicked the context menu");
+            }
+        });
+
+//        btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
 //            @Override
-//            public void handle(ContextMenuEvent e) {
-//                System.out.println("Clicked the context menu");
+//            public void handle(MouseEvent mouseEvent) {
+//                System.out.println("Clicked the mouse");
 //            }
 //        });
-//
-//        btn.setOnMouseExited(e -> System.out.println("Exited mouse"));
-//
-//        btn.setOnMouseEntered( (e) -> {System.out.println("Entered mouse");   }    );
-//
-//        btn.setOnMouseMoved(mouseEventEventHandler);
-//
 
-        //This is an event listener, listen the button any time someone clicks on
-        //Esto es una Anonymus function, porque las usamos? because it is an interface that
-        // declares a method and this method needs a body
+        //lEFT CLICK
+        btn.setOnMouseClicked( (e) -> {
+            System.out.println("Clicked LEFT mouse");
+        });
 
-        //Porque existe? porque es una interface que tiene un metodo, y este metodo neceista un
-        // cuerpo.
+        //Cuando el mouse sale del boton
+        btn.setOnMouseExited(e -> System.out.println("Exited mouse"));
 
-        //Anonymus function no pertenece a ninguna clase, 99% de las veces esta atado a data
-        // source or an event
+        //Cuando el mouse entra al boton
+        btn.setOnMouseEntered( (e) -> {System.out.println("Entered mouse");   }    );
+
+        //Cuando el mouse se mueve dentro del boton
+        btn.setOnMouseMoved(mouseEventEventHandler);
+
+//*******************************************************************
+
+//This is an event listener, listen the button any time someone clicks on
+//Esto es una Anonymus function, porque las usamos? because it is an interface that
+// declares a method and this method needs a body
+
+//Porque existe? porque es una interface que tiene un metodo, y este metodo neceista un
+// cuerpo.
+
+//Anonymus function no pertenece a ninguna clase, 99% de las veces esta atado a data
+// source or an event
         btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
