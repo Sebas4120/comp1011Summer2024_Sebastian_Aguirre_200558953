@@ -28,12 +28,13 @@ public class Camera {
     public Camera(){
 
     }
-    public Camera(String model, String make, String color, String sensor, String lens) {
+    public Camera(String model, String make, String color, String sensor, String lens, int megaPixels) {
         setModel(model);
         setMake(make);
         setColor(color);
         setSensor(sensor);
         setLens(lens);
+        setMegaPixels(megaPixels);
     }
 
 
@@ -104,6 +105,24 @@ public class Camera {
         return true;
     }
 
+
+    //Week 5
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public int getMegaPixels() {
+        return megaPixels;
+    }
+
+    public void setMegaPixels(int megaPixels) {
+        this.megaPixels = megaPixels;
+    }
+
     @Override
     public String toString() {
         return "Camera selected:" +'\n' +
@@ -111,7 +130,8 @@ public class Camera {
                 "model=" + model + '\n'+
                 "lens= " + lens + '\n' +
                 "color=" + color + '\n' +
-                "sensor=" + sensor + '\n';
+                "sensor=" + sensor + '\n' +
+                "megapixels=" + megaPixels + '\n';
     }
 
 

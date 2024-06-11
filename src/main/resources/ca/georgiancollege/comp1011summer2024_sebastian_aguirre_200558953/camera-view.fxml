@@ -71,7 +71,7 @@
                         <Image url="@photos/default.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnEdit" layoutX="48.0" layoutY="399.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="60.0" styleClass="_modify" />
+                  <Button fx:id="btnEdit" layoutX="48.0" layoutY="399.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="60.0" styleClass="_modify" stylesheets="@photos/app.css" />
                   <Button fx:id="btnDelete" layoutX="163.0" layoutY="399.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="60.0" styleClass=".modify_buttons" />
                </children>
             </AnchorPane>

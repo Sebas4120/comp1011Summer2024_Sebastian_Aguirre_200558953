@@ -1,12 +1,17 @@
 #btnEdit{
     -fx-background-color: skyblue;
     -fx-text-fill: white;
+    -fx-min-height: 50;
+    -fx-min-width: 50;
 }
 
 #btnEdit:hover{
     -fx-background-color: blue;
 }
 
-.modify_buttons{
+#btnDelete{
     -fx-background-color: red;
+    -fx-text-fill: white;
+    -fx-min-height: 50;
+    -fx-min-width: 50;
 }
