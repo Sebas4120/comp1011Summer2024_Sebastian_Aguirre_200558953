@@ -13,11 +13,6 @@ public class Camera {
 
     private int megaPixels;
 
-
-
-
-
-
     //alt+insert
     private void validate(String title, String data){
         if(data.trim().isEmpty()){
@@ -25,9 +20,10 @@ public class Camera {
                     "Needs to be at least 1 character");
         }
     }
-    public Camera(){
 
+    public Camera(){
     }
+
     public Camera(String model, String make, String color, String sensor, String lens, int megaPixels) {
         setModel(model);
         setMake(make);
@@ -36,7 +32,6 @@ public class Camera {
         setLens(lens);
         setMegaPixels(megaPixels);
     }
-
 
     public String getLens() {
         return lens;

@@ -93,7 +93,7 @@ public class CameraController {
             output.setText(camera.toString());
 
             //Si el usuario a ingresado los datos correctos en cada seccion, agregamos esos datos
-            // de la camara a la ArrayList
+            // de la camara a la ArrayList, y esta lista es la que estara en el combobox
             camerasList.add(camera);
 
             //Imprimo la lista para verificar que datos se han puesto
@@ -180,6 +180,7 @@ public class CameraController {
             }
         });
 
+    //IMAGENESSSSSSSSSSSSSSSSSS
         String path = getClass().getResource("photos").getPath();
         System.out.println(path);
 
