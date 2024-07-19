@@ -1,0 +1,31 @@
+Stream
+    Data that is generated on the spot
+        Manually create stream
+        Transform any collection data type (except Maps) to a stream
+        Streams temp data => executed/actions ONCE
+
+
+
+
+
+
+
+
+
+___________________________________________________________________________
+
+Using the Random Object & knowledge of Streams and Lambda
+
+Create a series (stream) of Student objects
+Student class should have studentId => random number between 1000 and 9999
+                          first name
+                          last name
+                          age => random value between 18 and 65
+                          grade => random value between 20-100
+
+Output all Failing students
+Output all Mature students (30+)
+Output all Honor Roll Students between 18 and 25
+
+___________________________________________________________________________
+:: means it is static
