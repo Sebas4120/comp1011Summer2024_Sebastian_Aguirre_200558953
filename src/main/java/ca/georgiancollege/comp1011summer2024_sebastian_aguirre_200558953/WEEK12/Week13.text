@@ -1,0 +1,11 @@
+GUI for BallDontLie API
+
+Search Player [TextBox] [Submit Button]
+ProgressBar (hidden at first)
+
+Player [ComboBox] Team [ComboBox]
+
+[Label to display player] [Label to display team]
+
+
+query the API to get the list of all the teams

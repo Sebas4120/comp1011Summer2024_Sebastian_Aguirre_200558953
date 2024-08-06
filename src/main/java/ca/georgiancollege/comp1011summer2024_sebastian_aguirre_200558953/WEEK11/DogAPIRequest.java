@@ -40,4 +40,15 @@ public class DogAPIRequest extends APIUtility {
 //        return gson.fromJson(json.toString(), DogListAllBreeds.class);
 //    }
 
+    public DogListAllBreeds getAllDogBreeds() throws IOException, InterruptedException {
+
+        String url = "https://dog.ceo/api/breeds/list/all";
+
+        json.setLength(0);
+        json.append(sendRequest(url));
+
+        return gson.fromJson(json.toString(), DogListAllBreeds.class);
+
+    }
+
 }

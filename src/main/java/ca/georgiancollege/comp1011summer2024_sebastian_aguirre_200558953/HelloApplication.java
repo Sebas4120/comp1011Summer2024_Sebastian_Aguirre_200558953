@@ -24,14 +24,15 @@ public class HelloApplication extends Application {
 //        stage.setResizable(false);
 //        stage.show();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dog-view" +
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ball-view" +
                 ".fxml"));
         DogController controller = new DogController();
         fxmlLoader.setController(controller);
 
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
-        stage.setTitle("Dog API");
+//        stage.setTitle("Dog API");
+        stage.setTitle("Ball Time");
         stage.setResizable(false);
         stage.show();
 
