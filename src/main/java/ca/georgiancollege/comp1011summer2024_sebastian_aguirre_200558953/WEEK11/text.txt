@@ -1,0 +1,13 @@
+Create a class named
+    APIUtility
+        sendRequest
+               sendRequest
+                    based on URL
+
+               retunr json string
+        DogAPIRequest extend APIUtility
+            getData
+                sendRequest of APIUtility
+            convert json to a Dog object
+            retunr Dog object
+        Dog(empty)
