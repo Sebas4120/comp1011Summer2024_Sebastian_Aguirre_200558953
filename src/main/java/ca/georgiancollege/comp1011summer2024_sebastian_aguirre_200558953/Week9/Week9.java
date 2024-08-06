@@ -20,6 +20,21 @@ public class Week9 {
 
     }
 
+    static void example3(){
+
+//        IntStream.range(1, 101)
+//                .filter(v -> v % 5 == 0)
+//                .forEach(v -> System.out.println(v)
+//                );
+//
+
+        IntStream.range(1, 21)
+                .map(v -> v * 5)
+                .forEach(System.out::println
+                );
+
+    }
+
     static void example4(){
 
         //generate values between 1 and 100
@@ -43,6 +58,7 @@ public class Week9 {
         //tenRandomNumsBetween1and100.forEach(System.out::println);
 
         int[] values = tenRandomNumsBetween1and100.toArray();
+        //Arrays.asList(values).stream().forEach(System.out::println);
         for(int value : values){
             System.out.println(value);
         }
@@ -72,6 +88,7 @@ public class Week9 {
         names.add("John Doe");
         names.add("Jane Smith");
 
+        //MODO TRADICIONAL
         ArrayList<String> namesContainingDVersion1 = new ArrayList<>();
         for (String name : names){
             if (name.toLowerCase().contains("d")){
@@ -83,15 +100,11 @@ public class Week9 {
             System.out.println(name);
         }
 
-        names.stream().filter (s -> s.toLowerCase().contains("d"))
-                .forEach(System.out::println);
+        //MODO CON PROGRAMACION FUNCIONAL
+            //SE NOTA MUCHO LA DIFERENCIA!!!!
+        names.stream().filter (s -> s.toLowerCase().contains("d")).forEach(System.out::println);
     }
 
-    static void example8(){
-        SecureRandom srand = new SecureRandom();
-
-
-    }
 
     static void funtask1(){
 
@@ -139,12 +152,43 @@ public class Week9 {
                 s.getFirstName() +" " + s.getLastName(), s.getAge()));
 
         System.out.println("*".repeat(20));
+
         System.out.println("Young(18-25) Honor Roll Students");
         students.stream().filter(s-> s.getAge() < 26 && s.getGrade() >= 80 ).forEach(s-> System.out.printf("Name = %s, Age=%d, Grade=%.1f\n",
                 s.getFirstName() +" " + s.getLastName(), s.getAge(), s.getGrade()));
 
     }
+
+    static void example8(){
+
+        Thread t1 = new Thread();//Thread-N, N starts at 0
+        t1.start();
+        Thread t2 = new Thread("My Thread");
+        t2.start();
+
+        Scanner scanner = new Scanner(System.in);
+
+        Runnable task = ()->{
+            System.out.println("Hello from thread " + Thread.currentThread().getName());
+            System.out.println(Thread.currentThread().getState());
+            //Integer.parseInt("abc");
+            System.out.println("Thanks for coming by! " + Thread.currentThread().getName());
+        };
+
+        Thread t3 = new Thread(task);
+        t3.start();
+
+        //scanner.nextLine();
+
+        System.out.println(Thread.currentThread().getName());
+        System.out.println(Thread.currentThread().getState());
+        System.out.println("End of example8");
+
+        System.out.println("*".repeat(10));
+        task.run();
+
+    }
     public static void main(String[] args) {
-        example4();
+        example8();
     }
 }

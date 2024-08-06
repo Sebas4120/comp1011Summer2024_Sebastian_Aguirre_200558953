@@ -1,0 +1,4 @@
+- cuando veas " ":[ significa que tienes que crear un arraylist del objeto que esta entre las
+comillas.
+
+ - cuando veas " " : sin ning square braket, signific que debes crear una nueva clase
