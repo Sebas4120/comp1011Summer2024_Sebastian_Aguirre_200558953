@@ -16,7 +16,7 @@ public class BallDontLieAPI {
     private Gson gson = new Gson();
     public BallDontLieAPI(){
         try{
-            key = Files.readString(Path.of("src/main/resources/ca/georgiancollege/ca.georgiancollege.comp1011summer2024_sebastian_aguirre_200558953/data/ball_api.txt"));
+            key = Files.readString(Path.of("src/main/resources/ca/georgiancollege/comp1011summer2024tuesdays/data/ball_api.txt"));
         }
         catch (Exception e){
             System.err.println(e);
@@ -55,12 +55,18 @@ public class BallDontLieAPI {
         return gson.fromJson(sendRequest(uri), BallDontLieAllPlayers.class);
 
     }
+    public BallDontLieAllPlayers getAllPlayers(String term){
+
+        String uri = "https://api.balldontlie.io/v1/players?search=" + term;
+        return gson.fromJson(sendRequest(uri), BallDontLieAllPlayers.class);
+
+    }
 
     public ListOfBallTeams getAllTeams() throws Exception{
 
         String uri = "https://api.balldontlie.io/v1/teams";
 
-        Path path = Path.of("src/main/resources/ca/georgiancollege/ca.georgiancollege.comp1011summer2024_sebastian_aguirre_200558953/data/teams_data.json");
+        Path path = Path.of("src/main/resources/ca/georgiancollege/comp1011summer2024tuesdays/data/teams_data.json");
 
         ListOfBallTeams teams;
         if(!Files.exists(path)){

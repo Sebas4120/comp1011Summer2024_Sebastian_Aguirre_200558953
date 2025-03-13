@@ -8,13 +8,13 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="59.0" layoutY="61.0" prefHeight="17.0" prefWidth="70.0" text="Status" />
-      <TextField fx:id="status" layoutX="160.0" layoutY="57.0" />
-      <Label layoutX="59.0" layoutY="114.0" prefHeight="17.0" prefWidth="43.0" text="Image" />
-      <ImageView fx:id="picture" fitHeight="200.0" fitWidth="264.0" layoutX="139.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="461.0" layoutY="139.0" mnemonicParsing="false" onAction="#onChange" text="Start" />
-      <Label layoutX="461.0" layoutY="61.0" prefHeight="17.0" prefWidth="70.0" text="Counter" />
-      <Label layoutX="461.0" layoutY="82.0" prefHeight="17.0" prefWidth="70.0" text="0" />
-      <Button layoutX="461.0" layoutY="178.0" mnemonicParsing="false" onAction="#onChange" text="Stop" />
+      <Label layoutX="99.0" layoutY="89.0" text="Status" />
+      <Label layoutX="98.0" layoutY="139.0" text="Image" />
+      <TextField fx:id="status" editable="false" layoutX="195.0" layoutY="85.0" />
+      <ImageView fx:id="picture" fitHeight="238.0" fitWidth="340.0" layoutX="139.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="495.0" layoutY="53.0" text="Counter" />
+      <Label fx:id="lblCounter" alignment="CENTER" layoutX="503.0" layoutY="76.0" prefHeight="34.0" prefWidth="33.0" text="0" />
+      <Button fx:id="btnStart" layoutX="499.0" layoutY="126.0" mnemonicParsing="false" style="-fx-background-color: green;" text="Start" textFill="WHITE" />
+      <Button fx:id="btnStop" layoutX="499.0" layoutY="166.0" mnemonicParsing="false" style="-fx-background-color: red;" text="Stop" textFill="WHITE" />
    </children>
 </AnchorPane>

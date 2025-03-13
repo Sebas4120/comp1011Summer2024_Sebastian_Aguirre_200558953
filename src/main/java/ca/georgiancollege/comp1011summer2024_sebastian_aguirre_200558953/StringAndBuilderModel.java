@@ -2,9 +2,10 @@ package ca.georgiancollege.comp1011summer2024_sebastian_aguirre_200558953;
 
 public class StringAndBuilderModel {
 
+
     private String dataType, content, method, args, result;
 
-    private DBUtil db = new DBUtil("WEEK6");
+    private DBUtil db = new DBUtil("comp1011");
 
 
     public StringAndBuilderModel(String dataType, String content, String method, String args) {
@@ -13,13 +14,11 @@ public class StringAndBuilderModel {
         setMethod(method);
         setArgs(args);
 
-     //   System.out.println(getClass().getName());
-//
+
         db.setTable("StringAndStringBuilder");
 
 
     }
-
     public void insertEntry() throws Exception{
 
         String sql = String.format(
@@ -27,6 +26,7 @@ public class StringAndBuilderModel {
                 db.getTable(), content, args, method, dataType);
         db.queryExec(sql);
     }
+
 
     public String getDataType() {
         return dataType;

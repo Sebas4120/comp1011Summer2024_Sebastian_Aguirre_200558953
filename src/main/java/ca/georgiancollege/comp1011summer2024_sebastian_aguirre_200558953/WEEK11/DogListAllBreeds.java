@@ -1,5 +1,8 @@
 package ca.georgiancollege.comp1011summer2024_sebastian_aguirre_200558953.WEEK11;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class DogListAllBreeds {
 
     private String status;
@@ -21,5 +24,4 @@ public class DogListAllBreeds {
     public void setMessage(Message message) {
         this.message = message;
     }
-
 }

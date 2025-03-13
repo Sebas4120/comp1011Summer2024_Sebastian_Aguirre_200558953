@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -32,8 +33,9 @@ public class DogController {
     private String uri = "https://dog.ceo/api/breeds/image/random";
 
     @FXML
-    void updateDog(){
+    void updateDog() throws IOException, InterruptedException {
         Dog dog = request.getData(uri);
+
         Platform.runLater(()->
                 status.setText(dog.getStatus())
         );
@@ -47,23 +49,33 @@ public class DogController {
     }
 
     @FXML
+    private void safeUpdateDog() {
+        try {
+            updateDog();
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace(); // Handle the exceptions appropriately
+        }
+    }
+
+    @FXML
     void updateCounter(){
 
         int value = Integer.parseInt(lblCounter.getText());
         value++;
         String updatedValue = value + "";
         Platform.runLater(()-> lblCounter.setText(updatedValue));
-
+        // lblCounter.setText(updatedValue);
     }
 
     @FXML
-    public void initialize() throws Exception{
+    public void initialize() throws Exception {
         updateDog();
+
         ScheduledExecutorService service = Executors.newScheduledThreadPool(3);
+
         btnStart.setOnAction(
                 event -> {
-                    service.scheduleAtFixedRate(this::updateDog, 0, 2500, TimeUnit.MILLISECONDS);
-
+                    service.scheduleAtFixedRate(this::safeUpdateDog, 0, 2500, TimeUnit.MILLISECONDS);
                 }
         );
 
